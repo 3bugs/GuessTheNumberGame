@@ -1,6 +1,7 @@
 package com.example.guessnumber;
 
 import android.os.Bundle;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
@@ -83,13 +84,22 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
 
                 int guessNumber = Integer.valueOf(mGuessNumber);
                 if (guessNumber == mAnswerNumber) {
-                    mAnswerTextView.setText(guessNumber + " ถูกต้องนะครับ");
+                    mAnswerTextView.setText(guessNumber + " ถูกต้องจ้า ^__^");
+                    mAnswerTextView.setTextColor(
+                            ContextCompat.getColor(GameActivity.this, android.R.color.holo_green_dark)
+                    );
                 } else if (guessNumber > mAnswerNumber) {
                     mAnswerTextView.setText(guessNumber + " มากเกินไป");
+                    mAnswerTextView.setTextColor(
+                            ContextCompat.getColor(GameActivity.this, android.R.color.holo_red_dark)
+                    );
                     mGuessNumber = "";
                     updateDigits();
                 } else if (guessNumber < mAnswerNumber) {
                     mAnswerTextView.setText(guessNumber + " น้อยเกินไป");
+                    mAnswerTextView.setTextColor(
+                            ContextCompat.getColor(GameActivity.this, android.R.color.holo_red_dark)
+                    );
                     mGuessNumber = "";
                     updateDigits();
                 }
